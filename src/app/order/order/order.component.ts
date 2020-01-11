@@ -17,10 +17,6 @@ export class OrderComponent implements OnInit {
     })
   }
 
-  orderTotal(items){
-    return items.reduce((acc, cur) => acc + cur.price, 0)
-  }
-
   totalEarnings(orders){
     return orders.reduce((acc, cur) => acc + this.orderTotal(cur.items), 0)
   }
@@ -28,4 +24,9 @@ export class OrderComponent implements OnInit {
   totalItems(orders){
     return orders.reduce((acc, cur) => acc + cur.items.length , 0)
   }
+
+  orderTotal(items){
+    return items.reduce((acc, cur) => acc + cur.price, 0)
+  }
+
 }

@@ -7,6 +7,7 @@ const config = require('./config')
 
 const Product = require('./models/product')
 const Order = require('./models/order')
+const port = process.env.PORT || 3003
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
@@ -156,6 +157,6 @@ app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../dist/index.html'))
 })
 
-app.listen(3003, ()=> {
-    console.log('Server is running at port 3003')
+app.listen(port, ()=> {
+    console.log(`Server is running at port ${port}`)
 })
