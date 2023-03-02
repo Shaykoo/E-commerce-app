@@ -11,6 +11,10 @@ export class NavComponent implements OnInit {
   cart = []
   constructor(private productService: ProductsService) { }
 
+  /* This will fetch the
+     cart items when the
+     component loads*/
+  
   ngOnInit() {
     this.productService.getCart()
     .subscribe((data) => {
