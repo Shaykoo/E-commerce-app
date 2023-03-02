@@ -12,6 +12,8 @@ export class ProductsComponent implements OnInit {
 
   constructor( private productsService: ProductsService) { }
 
+  /* This will fetch all the products
+     for the product screen */
   ngOnInit() {
     this.productsService.fetchProducts();
     this.productsService.getProducts()
@@ -20,6 +22,7 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  /* Adding Items to the cart */
   addItemToCart(item){
     this.productsService.addToCart(item._id)
   }
