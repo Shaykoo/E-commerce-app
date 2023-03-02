@@ -17,8 +17,10 @@ export class ProductsService {
     this.productsSub = new BehaviorSubject<any[]>(this.products)
     this.cartSub = new BehaviorSubject<any[]>(this.cart)
   } 
-//subject --> Observable --> so that components can subscribe // see getProducts()
-//this method is fetching the array of products from the backend
+/* subject --> Observable --> so that components can subscribe 
+  see getProducts()
+  this method is fetching the array of products from the backend */
+  
   fetchProducts(){
     //we need to make this array an observable as any component which fetchs this array 
     // may get updated as the array gets updated using .subscribe to know if there is 
