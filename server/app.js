@@ -18,6 +18,8 @@ mongoose.connect(
 app.use(bodyParser.json())
 app.use(express.static(path.join(__dirname, '../dist')))
 
+// Seeder data for initial database config
+
 // app.get('/seeddb', (req, res)=>{
 //     const data = [
 //         {
@@ -112,6 +114,7 @@ app.use(express.static(path.join(__dirname, '../dist')))
 // })
 
 
+// Sending all the products from the database
 app.get('/api/products', (req, res)=>{
     Product.find().then((rec)=>{
         if(rec){
@@ -122,6 +125,7 @@ app.get('/api/products', (req, res)=>{
     })
 })
 
+// Sending for checkout process
 app.post('/api/checkout', (req, res)=>{
     const newOrder = new Order({
         firstName: req.body.firstName,
@@ -141,6 +145,7 @@ app.post('/api/checkout', (req, res)=>{
     })
 })
 
+// Sending all the orders
 app.get('/api/orders', (req, res)=>{
     Order.find()
     .populate('items') 
@@ -153,10 +158,12 @@ app.get('/api/orders', (req, res)=>{
     })
 })
 
+
 app.get('*', (req, res)=>{
     res.sendFile(path.join(__dirname, '../dist/index.html'))
 })
 
+// Server config
 app.listen(port, ()=> {
     console.log(`Server is running at port ${port}`)
 })
