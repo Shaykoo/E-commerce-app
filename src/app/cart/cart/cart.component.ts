@@ -12,6 +12,9 @@ export class CartComponent implements OnInit {
   cartTotal = 0
   constructor(private productService : ProductsService) { }
 
+  /* This will fetch all the products
+     from the cart and total of all
+     as well  */
   ngOnInit() {
     this.productService.getCart()
     .subscribe((data) => {
@@ -20,6 +23,7 @@ export class CartComponent implements OnInit {
     })
   }
 
+  // To remove an item with an ID
   removeItemFromCart(item){
     this.productService.removeFromCart(item.id)
   }
