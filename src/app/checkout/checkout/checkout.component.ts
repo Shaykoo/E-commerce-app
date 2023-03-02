@@ -11,6 +11,7 @@ import { Router } from '@angular/router'
 export class CheckoutComponent implements OnInit {
   cart = []
   cartTotal= 0
+  // Form Initilization
   checkoutForm = this.fb.group({
     firstName: [ '', Validators.required],
     lastName: ['', Validators.required],
@@ -24,6 +25,10 @@ export class CheckoutComponent implements OnInit {
 
   constructor( private router: Router, private fb : FormBuilder ,private productsService : ProductsService) { }
 
+  /* This will fetch the cart
+      and it's total when this
+      componet loads */
+  
   ngOnInit() {
     this.productsService.getCart()
     .subscribe((data) => {
@@ -32,6 +37,7 @@ export class CheckoutComponent implements OnInit {
     })
   }
 
+  
   doCheckout(){
     const order = {
       ...this.checkoutForm.value,
